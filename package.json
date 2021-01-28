@@ -1,0 +1,19 @@
+{
+  "name": "restaurant-food-delivery-restapi",
+  "version": "1.0.0",
+  "description": "A Food Delivery & Ordering System for a Restaurant",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "keywords": [
+    "restaurant",
+    "restapi",
+    "food",
+    "delivery",
+    "food",
+    "order"
+  ],
+  "author": "Khaled Mohammad",
+  "license": "ISC"
+}
