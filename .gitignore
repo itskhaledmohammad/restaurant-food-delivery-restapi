@@ -1,2 +1,7 @@
 node_modules
-config/.dev.env
+logs
+npm-debug.log
+.DS_Store
+*.env
+pg_data
+keys
