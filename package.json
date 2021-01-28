@@ -21,11 +21,6 @@
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
-    "eslint": "^7.18.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-prettier": "^3.3.1",
     "express": "^4.17.1",
     "express-validator": "^6.9.2",
     "faker": "^5.2.0",
@@ -35,7 +30,6 @@
     "luxon": "^1.25.0",
     "morgan": "^1.10.0",
     "nodemailer": "^6.4.17",
-    "nodemon": "^2.0.7",
     "objection": "^2.2.12",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
@@ -43,5 +37,13 @@
     "pg": "^8.5.1",
     "uuid": "^8.3.2",
     "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "nodemon": "^2.0.7"
   }
 }
