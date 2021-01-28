@@ -1,8 +1,25 @@
+exports.up = function (knex) {
+  return knex.schema.createTable('menu_items', (table) => {
+    table.increments('id').primary();
+    table.integer('order_id');
+    table.integer('item_id');
+    table.integer('quantity');
+    table.timestamp('created_at', { useTz: true }).defaultTo(knex.fn.now());
 
-exports.up = function(knex) {
-  
+    table.foreign('order_id')
+      .references('id')
+      .inTable('orders')
+      .onUpdate('CASCADE')
+      .onDelete('CASCADE');
+
+    table.foreign('item_id')
+      .references('id')
+      .inTable('menu_items')
+      .onUpdate('CASCADE')
+      .onDelete('CASCADE');
+  });
 };
 
-exports.down = function(knex) {
-  
+exports.down = function (knex) {
+  return knex.schema.dropTable('menu_items');
 };
