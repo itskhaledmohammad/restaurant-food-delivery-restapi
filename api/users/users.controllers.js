@@ -1,13 +1,13 @@
 const User = require('@users/users.model.js');
 const { genPassword } = require('@utils/PasswordManager.js');
-// TODO: Don't allow it to just call any users.
+
 async function getUser(req, res) {
   const uid = req.params.id;
   const userInfo = await User.query().where('id', uid);
   res.status(200).json(userInfo);
 }
+
 async function createUser(req, res) {
-  // Generating Password
   const HashedSaltPass = genPassword(req.body.password);
   const { salt, hash: password } = HashedSaltPass;
   const { email, name, delivery_address } = req.body;
@@ -28,6 +28,7 @@ async function createUser(req, res) {
     return res.status(500).json({ status: false, error: err.name });
   }
 }
+
 async function updateUser(req, res) {
   const options = {
     noDelete: true, noRelate: true, noUnrelate: true, noInsert: true
@@ -50,8 +51,16 @@ async function updateUser(req, res) {
     return res.status(500).json({ status: false, error: err.name });
   }
 }
-async function deleteUser(req, res) {
 
+async function deleteUser(req, res) {
+  const uid = req.params.id;
+
+  try {
+    await User.query().delete().where('id', uid);
+    return res.status(200).json({ success: true, msg: `User Deleted.` });
+  } catch (err) {
+    return res.status(500).json({ success: false, msg: err.toString() });
+  }
 }
 
 module.exports = {

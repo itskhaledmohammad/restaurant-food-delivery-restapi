@@ -7,8 +7,8 @@ const orders = require('@orders/orders.routes');
 
 const router = express.Router();
 router.use('/auth', auth);
-router.use('/users', passport.authenticate('jwt', { session: false }), users);
-router.use('/items', items);
+router.use('/users', users);
+router.use('/items', passport.authenticate('jwt', { session: false }), items);
 router.use('/orders', passport.authenticate('jwt', { session: false }), orders);
 
 module.exports = router;
