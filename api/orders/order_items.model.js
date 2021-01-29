@@ -8,11 +8,10 @@ class OrderItems extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['order_id', 'item_id', 'quantity'],
+      required: ['order_id', 'item_id'],
       properties: {
         user_id: { type: 'integer' },
         item_id: { type: 'integer' },
-        quantity: { type: 'integer' }
       },
     };
   }

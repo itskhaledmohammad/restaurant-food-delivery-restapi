@@ -3,7 +3,6 @@ exports.up = function (knex) {
     table.increments('id').primary();
     table.integer('order_id');
     table.integer('item_id');
-    table.integer('quantity');
     table.timestamp('created_at', { useTz: true }).defaultTo(knex.fn.now());
 
     table.foreign('order_id')

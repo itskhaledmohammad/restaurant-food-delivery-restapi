@@ -1,9 +1,8 @@
 const express = require('express');
+const { createOrder } = require('@orders/orders.controllers.js');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.json({ name: 'Khaled' });
-});
+router.post('/', createOrder);
 
 module.exports = router;

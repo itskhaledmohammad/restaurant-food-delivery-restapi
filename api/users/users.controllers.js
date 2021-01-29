@@ -53,7 +53,7 @@ async function updateUser(req, res) {
     const result = await User.query().where('id', uid).patch(newUser);
     return res.status(201).json({ msg: 'User info updated.', result });
   } catch (err) {
-    return res.status(500).json({ status: false, error: err.name, err: err.toString() });
+    return res.status(500).json({ status: false, error: err.name });
   }
 }
 
