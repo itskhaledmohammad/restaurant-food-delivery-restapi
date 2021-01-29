@@ -53,15 +53,12 @@ function genKeyPair() {
     },
   });
 
-  // Create the public key file
   try {
     fs.writeFileSync(`./keys/id_rsa_pub.pem`, keyPair.publicKey);
     fs.writeFileSync(`./keys/id_rsa_priv.pem`, keyPair.privateKey);
   } catch (e) {
     console.log(e);
   }
-
-  // Create the private key file
 }
 
 module.exports = {

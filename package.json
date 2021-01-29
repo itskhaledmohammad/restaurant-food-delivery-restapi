@@ -4,7 +4,9 @@
   "description": "A Food Delivery & Ordering System for a Restaurant",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "npm run test",
+    "dev": "nodemon ./index.js",
+    "rms": "knex migrate:rollback --all && npx knex migrate:latest && knex seed:run"
   },
   "keywords": [
     "restaurant",
@@ -54,7 +56,8 @@
     "@items": "api/items",
     "@orders": "api/orders",
     "@users": "api/users",
-    "@utils": "api/utils"
+    "@utils": "api/utils",
+    "@keys": "api/keys"
   }
   
 }
