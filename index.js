@@ -1,3 +1,4 @@
+require('module-alias/register');
 const app = require('./app');
 
 app.set('port', process.env.PORT || 7777);

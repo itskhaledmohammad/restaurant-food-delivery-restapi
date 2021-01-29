@@ -28,6 +28,7 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.16",
     "luxon": "^1.25.0",
+    "module-alias": "^2.2.2",
     "morgan": "^1.10.0",
     "nodemailer": "^6.4.17",
     "objection": "^2.2.12",
@@ -45,5 +46,15 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.3.1",
     "nodemon": "^2.0.7"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@api": "api",
+    "@auth": "api/auth",
+    "@items": "api/items",
+    "@orders": "api/orders",
+    "@users": "api/users",
+    "@utils": "api/utils"
   }
+  
 }
