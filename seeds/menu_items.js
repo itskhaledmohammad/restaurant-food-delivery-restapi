@@ -33,6 +33,6 @@ exports.seed = function (knex) {
         price_cents: faker.random.number({ min: 1000, max: 10000 }),
       }));
 
-      knex('menu_items').insert(menuItems);
+      return knex('menu_items').insert(menuItems);
     });
 };

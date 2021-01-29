@@ -2,8 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.json({ name: 'Khaled' });
-});
+router.post('/login',);
+router.get('/logout',);
 
 module.exports = router;
