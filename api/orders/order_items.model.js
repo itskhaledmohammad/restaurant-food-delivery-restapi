@@ -1,19 +1,21 @@
 const { Model } = require('objection');
 
-class Order extends Model {
+class OrderItems extends Model {
   static get tableName() {
-    return 'orders';
+    return 'order_items';
   }
 
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['user_id'],
+      required: ['order_id', 'item_id', 'quantity'],
       properties: {
         user_id: { type: 'integer' },
+        item_id: { type: 'integer' },
+        quantity: { type: 'integer' }
       },
     };
   }
 }
 
-module.exports = Order;
+module.exports = OrderItems;
