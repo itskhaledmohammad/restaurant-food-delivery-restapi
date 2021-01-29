@@ -4,7 +4,7 @@ const { genPassword } = require('@utils/PasswordManager.js');
 async function getUser(req, res) {
   const uid = req.params.id;
   const userInfo = await User.query().where('id', uid);
-  res.status(200).json(userInfo);
+  res.status(200).json(...userInfo);
 }
 
 async function createUser(req, res) {
@@ -20,7 +20,12 @@ async function createUser(req, res) {
       salt,
       delivery_address
     });
-    return res.status(201).json(newUser);
+    return res.status(201).json({
+      email: newUser.email,
+      name: newUser.name,
+      delivery_address: newUser.delivery_address,
+      created_at: newUser.created_at
+    });
   } catch (err) {
     if (err.name === 'UniqueViolationError') {
       return res.status(409).json({ status: false, error: 'User already exists' });
@@ -35,20 +40,20 @@ async function updateUser(req, res) {
   };
 
   const { name, delivery_address } = req.body;
-  const uid = req.params.id;
+  const uid = parseInt(req.params.id);
 
-  let updatedUser = { id: uid };
+  let newUser = {};
   if (name) {
-    updatedUser = { ...updateUser, name };
+    newUser = { ...newUser, name };
   }
   if (delivery_address) {
-    updatedUser = { ...updateUser, delivery_address };
+    newUser = { ...newUser, delivery_address };
   }
   try {
-    await User.query().upsertGraph(updatedUser, options);
-    return res.status(201).json('User info updated.');
+    const result = await User.query().where('id', uid).patch(newUser);
+    return res.status(201).json({ msg: 'User info updated.', result });
   } catch (err) {
-    return res.status(500).json({ status: false, error: err.name });
+    return res.status(500).json({ status: false, error: err.name, err: err.toString() });
   }
 }
 

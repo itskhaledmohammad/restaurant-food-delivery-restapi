@@ -11,6 +11,6 @@ const router = express.Router();
 router.get('/:id', passport.authenticate('jwt', { session: false }), isOwner, getUser);
 router.put('/:id', passport.authenticate('jwt', { session: false }), isOwner, updateUser);
 router.delete('/:id', passport.authenticate('jwt', { session: false }), isOwner, deleteUser);
-router.post('/:id', createUser);
+router.post('/', createUser);
 
 module.exports = router;
