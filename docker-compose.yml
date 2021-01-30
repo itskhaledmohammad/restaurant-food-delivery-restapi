@@ -1,7 +1,20 @@
 version: '3.7'
 services:
+
   food_delivery_restapi:
-    container_name: food_delivery_restapi
+    build: .
+    depends_on:
+      - pg
+    environment:
+      PORT: 3030
+    ports:
+      - "3030:3030"
+    command: npm run dev
+    volumes:
+      - .:/app/
+      - /app/node_modules
+  pg:
+    container_name: food_delivery_db
     image: "postgres"
     env_file:
       - ./config/.dev.env
