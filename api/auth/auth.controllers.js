@@ -1,5 +1,6 @@
 const User = require('@users/users.model.js');
 const { validPassword, issueJWT } = require('@utils/PasswordManager.js');
+const redisClient = require('@utils/RedisClient.js');
 
 async function login(req, res, next) {
   const { email, password } = req.body;
@@ -13,7 +14,6 @@ async function login(req, res, next) {
 
       if (isCorrect) {
         const tokenObject = issueJWT(user);
-
         return res.status(200).json({ success: true, token: tokenObject.token, expiresIn: tokenObject.expires });
       }
       return res.status(401).json({ success: false, msg: 'You entered the wrong password' });
@@ -23,7 +23,12 @@ async function login(req, res, next) {
     });
 }
 async function logout(req, res) {
-
+  try {
+    // await redisClient.LPUSH(req.user.id, req.jwtToken);
+    return res.status(204).json({ success: true, message: 'Successfully logged out.' });
+  } catch (err) {
+    return res.status(500).json({ success: false, msg: err.toString() });
+  }
 }
 
 module.exports = {

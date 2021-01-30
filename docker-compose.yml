@@ -16,7 +16,6 @@ services:
   
   redis: 
     container_name: redis_db
-    command: redis-server --requirepass fooddelivery121
     image: "redis:alpine"
     ports:
         - "6379:6379"
