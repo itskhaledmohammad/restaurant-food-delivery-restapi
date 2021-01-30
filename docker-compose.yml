@@ -1,6 +1,5 @@
 version: '3.7'
 services:
-
   food_delivery_restapi:
     build: .
     depends_on:

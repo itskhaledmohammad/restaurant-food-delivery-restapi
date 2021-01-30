@@ -1,8 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-// const morgan = require('morgan');
 // const winston = require('winston');
+const morgan = require('morgan');
+
+morgan('combined');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const cors = require('cors');
