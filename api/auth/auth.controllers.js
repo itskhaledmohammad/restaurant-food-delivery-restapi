@@ -24,8 +24,8 @@ async function login(req, res, next) {
 }
 async function logout(req, res) {
   try {
-    // await redisClient.LPUSH(req.user.id, req.jwtToken);
-    return res.status(204).json({ success: true, message: 'Successfully logged out.' });
+    await redisClient.lpushAsync(req.user.id, req.token);
+    return res.status(200).json({ success: true, message: 'Successfully logged out.' });
   } catch (err) {
     return res.status(500).json({ success: false, msg: err.toString() });
   }

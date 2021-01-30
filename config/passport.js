@@ -17,35 +17,40 @@ const options = {
 
 module.exports = (passport) => {
   passport.use(new JwtStrategy(options, (async (req, jwtPayload, done) => {
+    const jwtToken = req.header('Authorization').substring(7);
     let err = null;
     let user = null;
-    const blacklisted = false;
+    let blacklisted = false;
     try {
       user = await User.query().findById(jwtPayload.sub);
     } catch (e) {
       err = e;
     }
 
-    // try {
-    //   const result = await redisClient.lrange(user.id, 0, 99999999);
-    //   if (result.indexOf(token) > -1) {
-    //     blacklisted = true;
-    //   }
-    // } catch (e) {
-    //   err = e;
-    // }
+    try {
+      if (user) {
+        const result = await redisClient.lrangeAsync(user.id, 0, 999);
+        if (result.indexOf(jwtToken) > -1) {
+          blacklisted = true;
+        }
+      }
+    } catch (e) {
+      err = e;
+      console.log(e);
+    }
+
     const timeNow = DateTime.local().toSeconds();
     const expires = jwtPayload.iat;
 
-    if ((!user || err) && !blacklisted) {
+    if (!user || err || blacklisted) {
       req.user = user;
-      req.jwtToken = jwtPayload;
       return done(err, false);
     }
     if (timeNow >= expires) {
       return done(err, false);
     }
     if (user || blacklisted) {
+      req.token = jwtToken;
       return done(null, user);
     }
     return done(null, false);

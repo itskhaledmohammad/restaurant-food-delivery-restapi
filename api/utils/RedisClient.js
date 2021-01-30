@@ -6,6 +6,8 @@ const redisClient = redis.createClient(redisConfig.development);
 
 module.exports = {
   ...redisClient,
+  lrangeAsync: promisify(redisClient.LRANGE).bind(redisClient),
+  lpushAsync: promisify(redisClient.LPUSH).bind(redisClient),
   getAsync: promisify(redisClient.get).bind(redisClient),
   setAsync: promisify(redisClient.set).bind(redisClient),
   delAsync: promisify(redisClient.del).bind(redisClient),
