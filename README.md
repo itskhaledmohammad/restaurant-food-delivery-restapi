@@ -15,7 +15,7 @@
 6. Now, as the JWT is signed with Asynchronous keys, so you can put yours in the `keys` directory or you can run the command: `node generateKeys.js` which will generate `id_rsa_priv.pem` and `id_rsa_pub.pem`,  inside the `keys` directory 
 7. Now run `sudo docker-compose up --build` which will spin up 3 containers needed for the project.
 8. After than run the command: `npm run rms`, which will migrate and seed the database.
-9. And Finally you should be able to access the api at: `localhost/api/v1/`
+9. And Finally you should be able to access the api at: `localhost:3030/api/v1/`
 
 Here is a list to Postman Collection that you can use to play with the api: https://www.getpostman.com/collections/81ec368366c4eacab421
 
