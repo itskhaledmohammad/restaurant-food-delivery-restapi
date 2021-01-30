@@ -38,6 +38,7 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "pg": "^8.5.1",
+    "redis": "^3.0.2",
     "uuid": "^8.3.2",
     "winston": "^3.3.3"
   },
@@ -59,5 +60,4 @@
     "@utils": "api/utils",
     "@keys": "api/keys"
   }
-  
 }
