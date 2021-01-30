@@ -53,6 +53,7 @@
   "_moduleAliases": {
     "@root": ".",
     "@api": "api",
+    "@config": "config",
     "@auth": "api/auth",
     "@items": "api/items",
     "@orders": "api/orders",

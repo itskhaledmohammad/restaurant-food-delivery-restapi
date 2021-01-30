@@ -15,7 +15,7 @@ require('./config/passport')(passport);
 const { Model } = require('objection');
 const Knex = require('knex');
 const apiRoutesV1 = require('@api/index');
-const knexSettings = require('./knexfile');
+const knexSettings = require('@config/knexfile.js');
 
 const knex = Knex(knexSettings.development);
 Model.knex(knex);
