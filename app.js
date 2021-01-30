@@ -23,6 +23,9 @@ Model.knex(knex);
 // Initializing our app 🎉
 const app = express();
 
+// Logging with Morgan 📝
+app.use(morgan('tiny'));
+
 // Some Security Headers. 👀
 app.use(helmet());
 
