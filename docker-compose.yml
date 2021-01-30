@@ -4,6 +4,7 @@ services:
     build: .
     depends_on:
       - pg
+      - redis
     environment:
       PORT: 3030
     ports:
@@ -12,6 +13,15 @@ services:
     volumes:
       - .:/app/
       - /app/node_modules
+  
+  redis: 
+    container_name: redis_db
+    command: redis-server --requirepass fooddelivery121
+    image: "redis:alpine"
+    ports:
+        - "6379:6379"
+    volumes:
+        - ./redis_data:/var/lib/redis
   pg:
     container_name: food_delivery_db
     image: "postgres"
